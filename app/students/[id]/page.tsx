@@ -4,7 +4,6 @@ import { useParams, useRouter } from "next/navigation";
 import { students as studentsData } from "@/data/students";
 import Sidebar from "@/components/Sidebar";
 import { useState } from "react";
-import type { Student } from "@/data/students";
 import Modal from "@/components/Modal";
 
 export default function StudentDetailPage() {
@@ -27,7 +26,7 @@ export default function StudentDetailPage() {
       <main className="ml-64 p-8 w-full">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">
-            {student.name}'s Details
+            {student.name}&apos;s Details
           </h1>
           <div className="flex gap-2">
             <button

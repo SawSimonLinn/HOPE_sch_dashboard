@@ -7,7 +7,7 @@ import type { Student } from "@/data/students";
 import { useRouter } from "next/navigation";
 
 export default function AddStudentPage() {
-  const [students, setStudents] = useState<Student[]>(studentsData);
+  const [students] = useState<Student[]>(studentsData);
   const [formData, setFormData] = useState<Student>({
     id: students.length + 1,
     name: "",

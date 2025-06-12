@@ -76,7 +76,7 @@ export default function EditStudentPage() {
               <input
                 name={name}
                 type={type}
-                value={(formData as any)[name]}
+                value={formData[name as keyof Student] as string}
                 onChange={handleChange}
                 className="border border-gray-300 rounded p-2"
               />
