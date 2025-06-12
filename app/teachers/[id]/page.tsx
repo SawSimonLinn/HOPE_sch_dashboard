@@ -51,6 +51,37 @@ export default function TeacherDetails() {
       <Sidebar />
       <main className="ml-64 p-8 w-full">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow p-6 space-y-6">
+          <div className="flex justify-between mt-0">
+            <button
+              onClick={() => router.push("/teachers")}
+              className="text-blue-600 hover:underline"
+            >
+              ← Back
+            </button>
+            <div className="space-x-4">
+              {editing ? (
+                <button
+                  onClick={saveChanges}
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                >
+                  💾 Save
+                </button>
+              ) : (
+                <button
+                  onClick={() => setEditing(true)}
+                  className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                >
+                  ✏️ Edit
+                </button>
+              )}
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                🗑️ Delete
+              </button>
+            </div>
+          </div>
           <h1 className="text-2xl font-bold text-gray-800">
             {editing ? "Edit Teacher" : `👨‍🏫 ${teacher.name}`}
           </h1>
@@ -93,38 +124,6 @@ export default function TeacherDetails() {
               {/* Add more teacher fields here if needed */}
             </div>
           )}
-
-          <div className="flex justify-between mt-6">
-            <div className="space-x-4">
-              {editing ? (
-                <button
-                  onClick={saveChanges}
-                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-                >
-                  💾 Save
-                </button>
-              ) : (
-                <button
-                  onClick={() => setEditing(true)}
-                  className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                >
-                  ✏️ Edit
-                </button>
-              )}
-              <button
-                onClick={() => setShowDeleteModal(true)}
-                className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-              >
-                🗑️ Delete
-              </button>
-            </div>
-            <button
-              onClick={() => router.push("/teachers")}
-              className="text-blue-600 hover:underline"
-            >
-              ← Back
-            </button>
-          </div>
         </div>
 
         {/* 🗑️ Confirm Delete Modal */}

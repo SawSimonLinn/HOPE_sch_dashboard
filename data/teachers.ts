@@ -1,4 +1,5 @@
 export type Teacher = {
+  email: string | number | readonly string[] | undefined;
   id: number;
   name: string;
   subject: string;
