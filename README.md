@@ -75,7 +75,3 @@ Los Angeles, CA
 ## License
 
 This project is open for learning and development purposes.
-
----
-
-You can copy and paste that directly into your `README.md`, babe 💻✨ Let me know if you want a dark mode badge or a demo GIF added later 😘
