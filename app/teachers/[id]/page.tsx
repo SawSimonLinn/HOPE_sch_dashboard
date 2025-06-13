@@ -6,6 +6,12 @@ import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { teachers as teacherData } from "@/data/teachers";
 import type { Teacher } from "@/data/teachers";
 import Modal from "@/components/Modal";
+import {
+  PencilIcon,
+  TrashIcon,
+  ArrowLeftIcon,
+  CheckIcon,
+} from "@heroicons/react/24/solid";
 
 export default function TeacherDetails() {
   const router = useRouter();
@@ -24,7 +30,7 @@ export default function TeacherDetails() {
     return (
       <div className="flex">
         <ResponsiveSidebar />
-        <main className="ml-0 md:ml-15  p-8 w-full">
+        <main className="ml-0 md:ml-15 p-8 w-full">
           <p className="text-red-500">Teacher not found</p>
         </main>
       </div>
@@ -51,41 +57,76 @@ export default function TeacherDetails() {
       <ResponsiveSidebar />
       <main className="ml-0 md:ml-15 p-8 w-full">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow p-6 space-y-6">
-          <div className="flex justify-between mt-0">
-            <button
-              onClick={() => router.push("/teachers")}
-              className="text-blue-600 hover:underline"
-            >
-              ← Back
-            </button>
-            <div className="space-x-4">
+          {/* 🧁 Title and Buttons */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <h1 className="text-2xl font-bold text-gray-800">
+              {editing ? "Edit Teacher" : `${teacher.name}'s Details`}
+            </h1>
+
+            {/* 🌙 Mobile: Icons Only */}
+            <div className="flex sm:hidden gap-2">
+              {editing ? (
+                <button
+                  onClick={saveChanges}
+                  className="p-2 bg-green-600 text-white rounded hover:bg-green-700"
+                >
+                  <CheckIcon className="h-5 w-5" />
+                </button>
+              ) : (
+                <button
+                  onClick={() => setEditing(true)}
+                  className="p-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                >
+                  <PencilIcon className="h-5 w-5" />
+                </button>
+              )}
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="p-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                <TrashIcon className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => router.push("/teachers")}
+                className="p-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              >
+                <ArrowLeftIcon className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* ☀️ Tablet/Desktop: Full Buttons */}
+            <div className="hidden sm:flex gap-2">
+              <button
+                onClick={() => router.push("/teachers")}
+                className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              >
+                ← Back
+              </button>
               {editing ? (
                 <button
                   onClick={saveChanges}
                   className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
                 >
-                  💾 Save
+                  Save
                 </button>
               ) : (
                 <button
                   onClick={() => setEditing(true)}
                   className="px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600"
                 >
-                  ✏️ Edit
+                  Edit
                 </button>
               )}
               <button
                 onClick={() => setShowDeleteModal(true)}
                 className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
               >
-                🗑️ Delete
+                Delete
               </button>
             </div>
           </div>
-          <h1 className="text-2xl font-bold text-gray-800">
-            {editing ? "Edit Teacher" : `👨‍🏫 ${teacher.name}`}
-          </h1>
 
+          {/* 🧾 Details or Inputs */}
           {editing ? (
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-gray-700">
               <input
@@ -121,12 +162,11 @@ export default function TeacherDetails() {
               <div>
                 <strong>Email:</strong> {teacher.email}
               </div>
-              {/* Add more teacher fields here if needed */}
             </div>
           )}
         </div>
 
-        {/* 🗑️ Confirm Delete Modal */}
+        {/* 🗑️ Delete Modal */}
         {showDeleteModal && (
           <Modal
             title="Confirm Delete"

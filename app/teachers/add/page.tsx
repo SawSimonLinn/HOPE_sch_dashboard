@@ -28,8 +28,8 @@ export default function AddTeacherPage() {
   return (
     <div className="flex">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-15 p-8 w-full max-w-4xl mx-auto">
-        <h1 className="text-2xl font-bold mb-6">➕ Add New Teacher</h1>
+      <main className="ml-0 md:ml-15 p-8 w-full">
+        <h1 className="text-xl font-bold mb-6">Add New Teacher</h1>
 
         <form
           onSubmit={handleSubmit}

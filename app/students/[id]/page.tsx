@@ -6,6 +6,12 @@ import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { useState } from "react";
 import Modal from "@/components/Modal";
 
+import {
+  PencilIcon,
+  TrashIcon,
+  ArrowLeftIcon,
+} from "@heroicons/react/24/solid";
+
 export default function StudentDetailPage() {
   const { id } = useParams();
   const router = useRouter();
@@ -24,33 +30,61 @@ export default function StudentDetailPage() {
     <div className="flex">
       <ResponsiveSidebar />
       <main className="ml-0 md:ml-15  p-8 w-full">
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4 sm:gap-0">
+          {/* 🧁 Title */}
           <h1 className="text-2xl font-bold text-gray-800">
             {student.name}&apos;s Details
           </h1>
-          <div className="flex gap-2">
-            <button
-              onClick={() => router.push(`/students/${student.id}/edit`)}
-              className="px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500"
-            >
-              Edit
-            </button>
-            <button
-              onClick={() => setShowDeleteModal(true)}
-              className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-            >
-              Delete
-            </button>
-            <button
-              onClick={() => router.back()}
-              className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
-            >
-              Back
-            </button>
+
+          {/* ✨ Action Buttons */}
+          <div className="flex gap-2 justify-start sm:justify-end">
+            {/* 🌙 Mobile: Icons Only */}
+            <div className="flex sm:hidden gap-2">
+              <button
+                onClick={() => router.push(`/students/${student.id}/edit`)}
+                className="p-2 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+              >
+                <PencilIcon className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="p-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                <TrashIcon className="h-5 w-5" />
+              </button>
+              <button
+                onClick={() => router.back()}
+                className="p-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              >
+                <ArrowLeftIcon className="h-5 w-5" />
+              </button>
+            </div>
+
+            {/* ☀️ Tablet & Desktop: Full Buttons */}
+            <div className="hidden sm:flex gap-2">
+              <button
+                onClick={() => router.push(`/students/${student.id}/edit`)}
+                className="px-4 py-2 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+              >
+                Edit
+              </button>
+              <button
+                onClick={() => setShowDeleteModal(true)}
+                className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+              >
+                Delete
+              </button>
+              <button
+                onClick={() => router.back()}
+                className="px-4 py-2 bg-gray-300 text-gray-700 rounded hover:bg-gray-400"
+              >
+                Back
+              </button>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm bg-white shadow rounded p-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
           <Info label="Student ID" value={student.studentId} />
           <Info label="Personal ID" value={student.personalId} />
           <Info label="Date of Birth" value={student.dob} />

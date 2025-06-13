@@ -54,7 +54,7 @@ export default function AddStudentPage() {
 
         <form
           onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-white p-6 shadow rounded"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-4"
         >
           <label className="flex flex-col gap-1">
             Name
