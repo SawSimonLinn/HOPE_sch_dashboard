@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { PiStudent } from "react-icons/pi";
+import { PiChalkboardTeacherLight } from "react-icons/pi";
+import { IoMdAdd } from "react-icons/io";
 
 export default function Sidebar() {
   return (
@@ -17,25 +20,37 @@ export default function Sidebar() {
           href="/students"
           className="hover:bg-blue-200/50 py-2 rounded ps-2 transition-all"
         >
-          📄 View Students
+          <div className="flex items-center gap-2">
+            {" "}
+            <PiStudent /> View Students
+          </div>
         </Link>
         <Link
           href="/teachers"
           className="hover:bg-blue-200/50 py-2 rounded ps-2 transition-all"
         >
-          🧑‍🏫 View Teachers
+          <div className="flex items-center gap-2">
+            {" "}
+            <PiChalkboardTeacherLight /> View Teachers
+          </div>
         </Link>
         <Link
           href="/students/add"
           className="hover:bg-blue-200/50 py-2 rounded ps-2 transition-all"
         >
-          ➕ Add Student
+          <div className="flex items-center gap-2">
+            {" "}
+            <IoMdAdd /> Add Student
+          </div>
         </Link>
         <Link
           href="/teachers/add"
           className="hover:bg-blue-200/50 py-2 rounded ps-2 transition-all"
         >
-          ➕ Add Teacher
+          <div className="flex items-center gap-2">
+            {" "}
+            <IoMdAdd /> Add Teacher
+          </div>
         </Link>
       </nav>
     </aside>

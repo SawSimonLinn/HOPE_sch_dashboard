@@ -25,6 +25,7 @@ export default function TeachersBySubjectChart({ data }: Props) {
           "#34D399", // green-400
           "#60A5FA", // blue-400
           "#A78BFA", // purple-400
+          "#F472B6", // pink-400
         ],
         borderWidth: 1,
       },
@@ -34,7 +35,7 @@ export default function TeachersBySubjectChart({ data }: Props) {
   return (
     <div className="w-full">
       <h2 className="text-md font-semibold mb-4 text-gray-700">
-        📘 Teachers by Subject
+        Teachers by Subject
       </h2>
       <Doughnut data={chartData} className="m-auto" />
     </div>

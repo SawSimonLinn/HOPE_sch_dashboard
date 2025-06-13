@@ -28,7 +28,7 @@ export default function StudentTeacherPie({
 
   return (
     <div className="w-full">
-      <h2 className="text-lg font-semibold mb-4">👥 Student vs Teacher</h2>
+      <h2 className="text-lg font-semibold mb-4">Student vs Teacher</h2>
       <Pie data={data} className="m-auto" />
     </div>
   );

@@ -7,6 +7,10 @@ import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { teachers, Teacher } from "@/data/teachers";
 import Modal from "@/components/Modal";
 
+// icons
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+
 export default function ViewTeachers() {
   const [search, setSearch] = useState("");
   const [editTeacher, setEditTeacher] = useState<Teacher | null>(null);
@@ -50,7 +54,7 @@ export default function ViewTeachers() {
             placeholder="Search by name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="p-2 border rounded w-1/3"
+            className="p-2 border rounded w-full"
           />
         </div>
 
@@ -79,19 +83,47 @@ export default function ViewTeachers() {
                     {teacher.name}
                   </td>
                   <td className="p-3 text-xs sm:text-sm">{teacher.subject}</td>
-                  <td
-                    className="p-3 text-xs sm:text-sm flex gap-2"
-                    onClick={(e) => e.stopPropagation()}
-                  >
+                  <td className="p-3 text-xs sm:text-sm flex">
+                    {/* Mobile icons */}
                     <button
-                      onClick={() => setEditTeacher(teacher)}
-                      className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                      className="block sm:hidden p-2  text-blue-400 rounded hover:bg-yellow-500"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditTeacher(teacher);
+                      }}
+                      aria-label="Edit"
+                      title="Edit"
+                    >
+                      <MdEdit size={20} />
+                    </button>
+                    <button
+                      className="block sm:hidden p-2 text-red-400 rounded hover:bg-red-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteTeacher(teacher);
+                      }}
+                      aria-label="Delete"
+                      title="Delete"
+                    >
+                      <MdDelete size={20} />
+                    </button>
+
+                    {/* Desktop text buttons */}
+                    <button
+                      className="hidden sm:block px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditTeacher(teacher);
+                      }}
                     >
                       Edit
                     </button>
                     <button
-                      onClick={() => setDeleteTeacher(teacher)}
-                      className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                      className="hidden sm:block px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteTeacher(teacher);
+                      }}
                     >
                       Delete
                     </button>

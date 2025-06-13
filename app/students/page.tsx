@@ -7,6 +7,10 @@ import type { Student } from "@/data/students";
 import Modal from "@/components/Modal";
 import { useRouter } from "next/navigation";
 
+// icons
+import { MdEdit } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+
 export default function ViewStudents() {
   const [students, setStudents] = useState<Student[]>(studentsData);
   const [editStudent, setEditStudent] = useState<Student | null>(null);
@@ -112,9 +116,34 @@ export default function ViewStudents() {
                   <td className="p-3 text-xs sm:text-sm text-left font-mono">
                     {student.age.toString().padStart(2, "0")}
                   </td>
-                  <td className="p-3 text-xs sm:text-sm flex gap-2">
+                  <td className="p-3 text-xs sm:text-sm flex">
+                    {/* Mobile icons */}
                     <button
-                      className="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                      className="block sm:hidden p-2  text-blue-400 rounded hover:bg-yellow-500"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditStudent(student);
+                      }}
+                      aria-label="Edit"
+                      title="Edit"
+                    >
+                      <MdEdit size={20} />
+                    </button>
+                    <button
+                      className="block sm:hidden p-2 text-red-400 rounded hover:bg-red-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteStudent(student);
+                      }}
+                      aria-label="Delete"
+                      title="Delete"
+                    >
+                      <MdDelete size={20} />
+                    </button>
+
+                    {/* Desktop text buttons */}
+                    <button
+                      className="hidden sm:block px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500"
                       onClick={(e) => {
                         e.stopPropagation();
                         setEditStudent(student);
@@ -123,7 +152,7 @@ export default function ViewStudents() {
                       Edit
                     </button>
                     <button
-                      className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                      className="hidden sm:block px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
                       onClick={(e) => {
                         e.stopPropagation();
                         setDeleteStudent(student);

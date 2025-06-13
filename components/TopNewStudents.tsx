@@ -19,7 +19,7 @@ export default function TopNewStudents({ students }: Props) {
   return (
     <div className="w-full flex flex-col">
       <h2 className="text-md font-semibold mb-7 text-gray-700">
-        🆕 Top 5 New Students
+        Top 5 New Students
       </h2>
       <ul className="space-y-4 text-sm text-gray-800">
         {top5.map((s) => (

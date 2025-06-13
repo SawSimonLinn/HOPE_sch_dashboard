@@ -51,7 +51,7 @@ export default function StudentsByGradeChart({ data }: Props) {
   return (
     <div className="w-full h-[300px] sm:h-[350px] pb-6">
       <h2 className="text-md font-semibold mb-4 text-gray-700">
-        📚 Students by Grade
+        Students by Grade
       </h2>
       <Bar data={chartData} options={options} />
     </div>

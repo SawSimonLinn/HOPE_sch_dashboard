@@ -34,7 +34,7 @@ export default function StudentsByAgeChart({ data }: Props) {
   return (
     <div className="w-full h-full min-h-[300px]">
       <h2 className="text-md font-semibold mb-4 text-gray-700">
-        🎂 Students by Age
+        Students by Age
       </h2>
       <Bar data={chartData} />
     </div>
