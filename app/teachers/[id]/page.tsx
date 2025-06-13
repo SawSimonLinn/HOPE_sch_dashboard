@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { teachers as teacherData } from "@/data/teachers";
 import type { Teacher } from "@/data/teachers";
 import Modal from "@/components/Modal";
@@ -23,8 +23,8 @@ export default function TeacherDetails() {
   if (!teacher) {
     return (
       <div className="flex">
-        <Sidebar />
-        <main className="ml-64 p-8 w-full">
+        <ResponsiveSidebar />
+        <main className="ml-0 md:ml-64  p-8 w-full">
           <p className="text-red-500">Teacher not found</p>
         </main>
       </div>
@@ -48,8 +48,8 @@ export default function TeacherDetails() {
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64  p-8 w-full">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow p-6 space-y-6">
           <div className="flex justify-between mt-0">
             <button

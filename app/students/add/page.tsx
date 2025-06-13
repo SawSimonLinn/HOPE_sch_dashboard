@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { students as studentsData } from "@/data/students";
 import type { Student } from "@/data/students";
 import { useRouter } from "next/navigation";
@@ -48,8 +48,8 @@ export default function AddStudentPage() {
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64  p-8 w-full">
         <h1 className="text-xl font-bold mb-6">Add New Student</h1>
 
         <form

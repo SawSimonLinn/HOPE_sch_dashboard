@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { students as studentsData } from "@/data/students";
 import type { Student } from "@/data/students";
 import Modal from "@/components/Modal";
@@ -52,18 +52,18 @@ export default function ViewStudents() {
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64  p-8 w-full">
         <h1 className="text-xl font-bold mb-6">View Students</h1>
 
         {/* 🔍 Filters */}
-        <div className="flex gap-4 mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 mb-6">
           <input
             type="text"
             placeholder="Search by name..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="p-2 border rounded w-1/3"
+            className="p-2 border rounded"
           />
           <input
             type="number"
@@ -82,59 +82,61 @@ export default function ViewStudents() {
         </div>
 
         {/* 📋 Table */}
-        <table className="w-full bg-white rounded shadow overflow-hidden">
-          <thead>
-            <tr className="bg-blue-200 text-left text-gray-700">
-              <th className="p-3 w-12">#</th>
-              <th className="p-3">Name</th>
-              <th className="p-3">Grade</th>
-              <th className="p-3">Age</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredStudents.map((student, index) => (
-              <tr
-                key={student.id}
-                className="border-t text-gray-700 hover:bg-blue-50 cursor-pointer"
-                onClick={() => router.push(`/students/${student.id}`)}
-              >
-                <td className="p-3 font-mono text-center">
-                  {(index + 1).toString().padStart(2, "0")}
-                </td>
-                <td className="p-3 text-blue-700 font-semibold">
-                  {student.name}
-                </td>
-                <td className="p-3 text-left font-mono">
-                  {student.grade.toString().padStart(2, "0")}
-                </td>
-                <td className="p-3 text-left font-mono">
-                  {student.age.toString().padStart(2, "0")}
-                </td>
-                <td className="p-3 flex gap-2">
-                  <button
-                    className="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setEditStudent(student);
-                    }}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setDeleteStudent(student);
-                    }}
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white rounded shadow">
+            <thead>
+              <tr className="bg-blue-200 text-left text-gray-700">
+                <th className="p-3 text-xs sm:text-sm w-12">#</th>
+                <th className="p-3 text-xs sm:text-sm">Name</th>
+                <th className="p-3 text-xs sm:text-sm">Grade</th>
+                <th className="p-3 text-xs sm:text-sm">Age</th>
+                <th className="p-3 text-xs sm:text-sm">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredStudents.map((student, index) => (
+                <tr
+                  key={student.id}
+                  className="border-t text-gray-700 hover:bg-blue-50 cursor-pointer"
+                  onClick={() => router.push(`/students/${student.id}`)}
+                >
+                  <td className="p-3 text-xs sm:text-sm font-mono text-center">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </td>
+                  <td className="p-3 text-xs sm:text-sm text-blue-700 font-semibold">
+                    {student.name}
+                  </td>
+                  <td className="p-3 text-xs sm:text-sm text-left font-mono">
+                    {student.grade.toString().padStart(2, "0")}
+                  </td>
+                  <td className="p-3 text-xs sm:text-sm text-left font-mono">
+                    {student.age.toString().padStart(2, "0")}
+                  </td>
+                  <td className="p-3 text-xs sm:text-sm flex gap-2">
+                    <button
+                      className="px-3 py-1 bg-yellow-400 text-white rounded hover:bg-yellow-500"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditStudent(student);
+                      }}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setDeleteStudent(student);
+                      }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* ✏️ Edit Modal */}
         {editStudent && (

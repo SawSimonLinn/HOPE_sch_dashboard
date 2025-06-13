@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { students } from "@/data/students";
 import { teachers } from "@/data/teachers";
 import StudentTeacherPie from "@/components/StudentTeacherPie";
@@ -30,59 +30,63 @@ export default function HomeDashboard() {
   });
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <Sidebar />
-      <main className="ml-0 md:ml-64 p-6 w-full space-y-8">
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64 p-4 sm:p-6 w-full space-y-6">
         {/* 🔲 ROW 1 */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* LEFT COLUMN */}
           <div className="grid gap-3">
-            {/* Top Stats (2 columns) */}
-            <div className="grid grid-cols-2 gap-4 h-auto">
+            {/* Top Stats */}
+            <div className="grid grid-cols-2 gap-4">
               <div
-                className="cursor-pointer bg-white px-6 py-4 mb-auto rounded-xl shadow text-center hover:bg-blue-50 transition"
+                className="cursor-pointer bg-white px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow text-center hover:bg-blue-50 transition"
                 onClick={() => router.push("/students")}
               >
-                <h2 className="text-sm text-gray-500">Total Students</h2>
-                <p className="text-3xl font-bold text-blue-600">
+                <h2 className="text-xs sm:text-sm text-gray-500">
+                  Total Students
+                </h2>
+                <p className="text-2xl sm:text-3xl font-bold text-blue-600">
                   {totalStudents}
                 </p>
               </div>
               <div
-                className="cursor-pointer bg-white px-6 py-4 mb-auto rounded-xl shadow text-center hover:bg-yellow-50 transition"
+                className="cursor-pointer bg-white px-4 py-3 sm:px-6 sm:py-4 rounded-xl shadow text-center hover:bg-yellow-50 transition"
                 onClick={() => router.push("/teachers")}
               >
-                <h2 className="text-sm text-gray-500">Total Teachers</h2>
-                <p className="text-3xl font-bold text-yellow-500">
+                <h2 className="text-xs sm:text-sm text-gray-500">
+                  Total Teachers
+                </h2>
+                <p className="text-2xl sm:text-3xl font-bold text-yellow-500">
                   {totalTeachers}
                 </p>
               </div>
             </div>
 
-            {/* Grade Count */}
-            <div className="bg-white p-6 rounded-xl shadow">
+            {/* Grade Chart */}
+            <div className="bg-white p-4 sm:p-6 rounded-xl shadow">
               <GradeTrackLineChart data={studentsByGrade} />
             </div>
           </div>
 
-          {/* RIGHT COLUMN */}
-          <div className="bg-white p-6 rounded-xl shadow">
+          {/* Students By Grade */}
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow">
             <StudentsByGradeChart data={studentsByGrade} />
           </div>
         </div>
 
-        {/* 🔲 ROW 2 (3 CHART COLUMNS) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-xl shadow">
+        {/* 🔲 ROW 2 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow">
             <StudentTeacherPie
               studentCount={totalStudents}
               teacherCount={totalTeachers}
             />
           </div>
-          <div className="bg-white p-6 rounded-xl shadow">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow">
             <TopNewStudents students={students} />
           </div>
-          <div className="bg-white p-6 rounded-xl shadow">
+          <div className="bg-white p-4 sm:p-6 rounded-xl shadow">
             <TeachersBySubjectChart data={teachersBySubject} />
           </div>
         </div>

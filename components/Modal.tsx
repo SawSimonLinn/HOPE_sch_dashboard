@@ -11,7 +11,7 @@ type ModalProps = {
 export default function Modal({ title, children, onClose }: ModalProps) {
   return (
     <div className="fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex justify-center items-center p-4">
-      <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg relative p-6 space-y-4 animate-fadeIn">
+      <div className="bg-white rounded-2xl shadow-xl w-full max-w-lg sm:max-w-md mx-auto relative p-6 space-y-4 animate-fadeIn">
         {/* ❌ Close Button */}
         <button
           onClick={onClose}

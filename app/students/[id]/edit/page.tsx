@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { useState, useEffect } from "react";
 import { students as studentList } from "@/data/students";
 import type { Student } from "@/data/students";
@@ -40,16 +40,16 @@ export default function EditStudentPage() {
   if (!formData) {
     return (
       <div className="flex">
-        <Sidebar />
-        <main className="ml-64 p-6 text-gray-500">Loading student data...</main>
+        <ResponsiveSidebar />
+        <main className=" p-6 text-gray-500">Loading student data...</main>
       </div>
     );
   }
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full">
+      <ResponsiveSidebar />
+      <main className=" p-8 w-full">
         <h1 className="text-xl font-bold mb-6">Edit Student</h1>
 
         <form

@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
+
 import { teachers, Teacher } from "@/data/teachers";
 import Modal from "@/components/Modal";
 
@@ -39,8 +40,8 @@ export default function ViewTeachers() {
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64  p-8 w-full">
         <h1 className="text-xl font-bold mb-6">View Teachers</h1>
 
         <div className="mb-6">
@@ -54,50 +55,52 @@ export default function ViewTeachers() {
         </div>
 
         {/* Table */}
-        <table className="w-full bg-white rounded shadow overflow-hidden">
-          <thead>
-            <tr className="bg-yellow-200 text-left">
-              <th className="p-3">#</th>
-              <th className="p-3">Name</th>
-              <th className="p-3">Subject</th>
-              <th className="p-3">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredTeachers.map((teacher, index) => (
-              <tr
-                key={teacher.id}
-                className="border-t hover:bg-yellow-50 transition cursor-pointer"
-                onClick={() => router.push(`/teachers/${teacher.id}`)}
-              >
-                <td className="p-3 font-mono text-left">
-                  {(index + 1).toString().padStart(2, "0")}
-                </td>
-                <td className="p-3 text-yellow-600 font-semibold">
-                  {teacher.name}
-                </td>
-                <td className="p-3">{teacher.subject}</td>
-                <td
-                  className="p-3 flex gap-2"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    onClick={() => setEditTeacher(teacher)}
-                    className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
-                  >
-                    Edit
-                  </button>
-                  <button
-                    onClick={() => setDeleteTeacher(teacher)}
-                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div className="overflow-x-auto">
+          <table className="min-w-full bg-white rounded shadow">
+            <thead>
+              <tr className="bg-yellow-200 text-left">
+                <th className="p-3 text-xs sm:text-sm">#</th>
+                <th className="p-3 text-xs sm:text-sm">Name</th>
+                <th className="p-3 text-xs sm:text-sm">Subject</th>
+                <th className="p-3 text-xs sm:text-sm">Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {filteredTeachers.map((teacher, index) => (
+                <tr
+                  key={teacher.id}
+                  className="border-t hover:bg-yellow-50 transition cursor-pointer"
+                  onClick={() => router.push(`/teachers/${teacher.id}`)}
+                >
+                  <td className="p-3 text-xs sm:text-sm font-mono text-left">
+                    {(index + 1).toString().padStart(2, "0")}
+                  </td>
+                  <td className="p-3 text-xs sm:text-sm text-yellow-600 font-semibold">
+                    {teacher.name}
+                  </td>
+                  <td className="p-3 text-xs sm:text-sm">{teacher.subject}</td>
+                  <td
+                    className="p-3 text-xs sm:text-sm flex gap-2"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <button
+                      onClick={() => setEditTeacher(teacher)}
+                      className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      onClick={() => setDeleteTeacher(teacher)}
+                      className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
         {/* Edit Modal */}
         {editTeacher && (

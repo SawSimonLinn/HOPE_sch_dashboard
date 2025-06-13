@@ -2,7 +2,7 @@
 
 import { useParams, useRouter } from "next/navigation";
 import { students as studentsData } from "@/data/students";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { useState } from "react";
 import Modal from "@/components/Modal";
 
@@ -22,8 +22,8 @@ export default function StudentDetailPage() {
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64  p-8 w-full">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">
             {student.name}&apos;s Details

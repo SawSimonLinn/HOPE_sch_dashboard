@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "@/components/Sidebar";
+import ResponsiveSidebar from "@/components/ResponsiveSidebar";
 import { useRouter } from "next/navigation";
 
 export default function AddTeacherPage() {
@@ -27,8 +27,8 @@ export default function AddTeacherPage() {
 
   return (
     <div className="flex">
-      <Sidebar />
-      <main className="ml-64 p-8 w-full max-w-4xl mx-auto">
+      <ResponsiveSidebar />
+      <main className="ml-0 md:ml-64  p-8 w-full max-w-4xl mx-auto">
         <h1 className="text-2xl font-bold mb-6">➕ Add New Teacher</h1>
 
         <form
