@@ -54,7 +54,7 @@ export default function TeacherDetails() {
 
   return (
     <div className="flex min-h-screen">
-      <div className="hidden md:block fixed top-0 left-0 h-screen w-64 z-10">
+      <div className="md:block fixed top-0 left-0 h-screen w-64 z-10">
         <ResponsiveSidebar />
       </div>
 
