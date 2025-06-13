@@ -49,7 +49,7 @@ export default function AddStudentPage() {
   return (
     <div className="flex">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-64  p-8 w-full">
+      <main className="ml-0 md:ml-15  p-8 w-full">
         <h1 className="text-xl font-bold mb-6">Add New Student</h1>
 
         <form

@@ -32,7 +32,7 @@ export default function HomeDashboard() {
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-100">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-64 p-4 sm:p-6 w-full space-y-6">
+      <main className="ml-0 md:ml-15 p-4 sm:p-6 w-full space-y-6">
         {/* 📱 Mobile Title */}
         <h1 className="text-lg sm:text-xl font-bold text-gray-800 mb-4 block md:hidden text-center">
           HOPE School Dashboard

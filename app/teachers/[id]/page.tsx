@@ -24,7 +24,7 @@ export default function TeacherDetails() {
     return (
       <div className="flex">
         <ResponsiveSidebar />
-        <main className="ml-0 md:ml-64  p-8 w-full">
+        <main className="ml-0 md:ml-15  p-8 w-full">
           <p className="text-red-500">Teacher not found</p>
         </main>
       </div>
@@ -49,7 +49,7 @@ export default function TeacherDetails() {
   return (
     <div className="flex">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-64  p-8 w-full">
+      <main className="ml-0 md:ml-15 p-8 w-full">
         <div className="max-w-3xl mx-auto bg-white rounded-xl shadow p-6 space-y-6">
           <div className="flex justify-between mt-0">
             <button

@@ -57,7 +57,7 @@ export default function ViewStudents() {
   return (
     <div className="flex">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-64  p-8 w-full">
+      <main className="ml-0 md:ml-15  p-8 w-full">
         <h1 className="text-xl font-bold mb-6">View Students</h1>
 
         {/* 🔍 Filters */}
@@ -116,7 +116,7 @@ export default function ViewStudents() {
                   <td className="p-3 text-xs sm:text-sm text-left font-mono">
                     {student.age.toString().padStart(2, "0")}
                   </td>
-                  <td className="p-3 text-xs sm:text-sm flex">
+                  <td className="p-3 text-xs sm:text-sm flex gap-2">
                     {/* Mobile icons */}
                     <button
                       className="block sm:hidden p-2  text-blue-400 rounded hover:bg-yellow-500"

@@ -23,7 +23,7 @@ export default function StudentDetailPage() {
   return (
     <div className="flex">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-64  p-8 w-full">
+      <main className="ml-0 md:ml-15  p-8 w-full">
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-2xl font-bold text-gray-800">
             {student.name}&apos;s Details

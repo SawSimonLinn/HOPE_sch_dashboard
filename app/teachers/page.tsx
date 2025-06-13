@@ -45,7 +45,7 @@ export default function ViewTeachers() {
   return (
     <div className="flex">
       <ResponsiveSidebar />
-      <main className="ml-0 md:ml-64  p-8 w-full">
+      <main className="ml-0 md:ml-15 p-8 w-full">
         <h1 className="text-xl font-bold mb-6">View Teachers</h1>
 
         <div className="mb-6">
@@ -83,7 +83,7 @@ export default function ViewTeachers() {
                     {teacher.name}
                   </td>
                   <td className="p-3 text-xs sm:text-sm">{teacher.subject}</td>
-                  <td className="p-3 text-xs sm:text-sm flex">
+                  <td className="p-3 text-xs sm:text-sm flex gap-2">
                     {/* Mobile icons */}
                     <button
                       className="block sm:hidden p-2  text-blue-400 rounded hover:bg-yellow-500"
