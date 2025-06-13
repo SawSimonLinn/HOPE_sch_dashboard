@@ -60,7 +60,7 @@ export default function GradeTrackLineChart({ data }: Props) {
   };
 
   return (
-    <div className="w-full h-[300px] sm:h-[250px] pb-5">
+    <div className="w-full md:w-[450px] h-[300px] sm:h-[250px] pb-5 mx-auto">
       <h2 className="text-md font-semibold mb-4 text-gray-700">
         Grade Track Overview
       </h2>
