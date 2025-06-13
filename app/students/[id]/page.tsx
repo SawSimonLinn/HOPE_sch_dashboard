@@ -27,9 +27,12 @@ export default function StudentDetailPage() {
   }
 
   return (
-    <div className="flex">
-      <ResponsiveSidebar />
-      <main className="ml-0 md:ml-15  p-8 w-full">
+    <div className="flex min-h-screen">
+      <div className="hidden md:block fixed top-0 left-0 h-screen w-64 z-10">
+        <ResponsiveSidebar />
+      </div>
+
+      <main className="flex-1 md:ml-64 overflow-y-auto p-4 sm:p-6 max-h-screen">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 gap-4 sm:gap-0">
           {/* 🧁 Title */}
           <h1 className="text-2xl font-bold text-gray-800">
